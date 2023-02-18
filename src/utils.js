@@ -21,3 +21,15 @@
 // }
 
 // export {Hey};
+
+
+class Apps() {
+
+    constructor(nombreApp, linkApp, iconApp) {
+        this.name = nombreApp;
+        this.link = linkApp;
+        this.icon = iconApp;
+        //ID = this.name
+    }
+
+}
