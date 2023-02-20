@@ -1,17 +1,22 @@
-import { createAppStructure } from "./createAppModule";
+import { createAppStructure, appendApp } from "./createAppModule";
 
 
 const body = document.getElementById('body');
 const popup = document.getElementById('add-popup');
 
 const form = document.querySelector('.form')
+const inputField = document.querySelectorAll('.input');
+
+const mainContainer = document.getElementById('main-container');
 
 const addBtn = document.getElementById('new-app-btn');
 
 
 const appLogo = document .querySelector(".app-logo")
+
+
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const url = 'https://www.google.com/favicon.ico';
+const url = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://standardjs.com/index.html#is-there-an-automatic-formatter';
 fetch(proxyUrl + url)
   .then(response => {
     if (!response.ok) {
@@ -30,6 +35,11 @@ fetch(proxyUrl + url)
   });
 
 
+  for (let i = 0; i < inputField.length; i++) {
+    inputField[i].addEventListener('click', (e) => {
+      e.stopPropagation();
+    })
+  }
 
 console.log(addBtn);
 
@@ -57,6 +67,8 @@ addBtn.addEventListener('click', (e) => {
   form.addEventListener('submit', function (event) {
     // Prevent the form from being submitted
     event.preventDefault();
+    event.stopPropagation();
+    console.log("Submited");
   }) 
 
   body.addEventListener('click', () => {
@@ -67,3 +79,5 @@ addBtn.addEventListener('click', (e) => {
     }
   })
 
+
+appendApp(mainContainer, 2);
