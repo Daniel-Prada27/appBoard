@@ -23,7 +23,7 @@
 // export {Hey};
 
 
-class Apps() {
+class Apps {
 
     constructor(nombreApp, linkApp, iconApp) {
         this.name = nombreApp;

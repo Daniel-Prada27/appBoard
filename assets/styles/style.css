@@ -8,8 +8,11 @@ body {
     flex-direction: column;
     margin: 0;
     background-color: #E0E0E0;
+    height: 100vh;
     width: 100vw;
     max-width: 100%;
+
+    font-family: var(--system-ui);
 }
 
 img {
@@ -116,6 +119,7 @@ img {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
+    visibility: hidden;
 
 
     position: fixed;
@@ -125,6 +129,8 @@ img {
     z-index: 3;
 
     border: 2px solid black;
+    background-color: #f0eef1;
+
     
     /* width: fit-content; */
     width: 70vw;
@@ -137,6 +143,7 @@ img {
 .addAppTitle {
     font-family: var(--system-ui);
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .popup > form {
