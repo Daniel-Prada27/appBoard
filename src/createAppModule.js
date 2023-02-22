@@ -32,6 +32,10 @@ export function createAppStructure(appObj) {
     iconImg.alt = appObj.name[0];
     // getIcon(appObj.appLink, currentIconDIv, currentIconSlot);
 
+    parentDiv.addEventListener('click', () => {
+        window.open(`${appObj.link}`, '_blank');
+    })
+
     counter++;
     return parentDiv;
 }
