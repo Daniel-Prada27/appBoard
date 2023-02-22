@@ -1,4 +1,4 @@
-import { createAppStructure, appendApp } from "./createAppModule";
+import { appendApp, counter, App, justGetIcon} from "./createAppModule";
 
 
 const body = document.getElementById('body');
@@ -7,7 +7,7 @@ const popup = document.getElementById('add-popup');
 const form = document.querySelector('.form')
 const inputField = document.querySelectorAll('.input');
 
-const mainContainer = document.getElementById('main-container');
+export const mainContainer = document.getElementById('main-container');
 
 const addBtn = document.getElementById('new-app-btn');
 
@@ -15,8 +15,9 @@ const addBtn = document.getElementById('new-app-btn');
 const appLogo = document .querySelector(".app-logo")
 
 
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+export const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const url = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://standardjs.com/index.html#is-there-an-automatic-formatter';
+export const baseURL = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url='
 fetch(proxyUrl + url)
   .then(response => {
     if (!response.ok) {
@@ -69,7 +70,20 @@ addBtn.addEventListener('click', (e) => {
     event.preventDefault();
     event.stopPropagation();
     console.log("Submited");
+
+    const newAppName = appName.value;
+    const newAppLink = appLink.value;
+    const newAppIconUrl = baseURL + newAppLink;
+    
+    let newApp = new App(newAppName,newAppLink, newAppIconUrl);
+    appendApp(newApp)
+    console.log(newApp);
+    console.log(newApp.name)
   }) 
+
+
+
+
 
   body.addEventListener('click', () => {
     console.log(popup.style.visibility);
@@ -80,4 +94,4 @@ addBtn.addEventListener('click', (e) => {
   })
 
 
-appendApp(mainContainer, 2);
+// appendApp(2);

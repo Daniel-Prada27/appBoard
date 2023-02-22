@@ -23,13 +23,13 @@
 // export {Hey};
 
 
-class Apps {
+class App {
 
-    constructor(nombreApp, linkApp, iconApp) {
-        this.name = nombreApp;
-        this.link = linkApp;
-        this.icon = iconApp;
-        //ID = this.name
+    constructor(appName, appLink, appIcon) {
+        this.name = appName;
+        this.link = appLink;
+        this.icon = appIcon;
+        // ID = this.name
     }
 
 }

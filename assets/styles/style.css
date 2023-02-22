@@ -108,6 +108,8 @@ img {
     align-items: center;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
     filter: drop-shadow(0 0 0.75rem #1A1E43);
+
+    cursor: pointer;
 }
 
 
