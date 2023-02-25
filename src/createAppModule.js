@@ -1,4 +1,4 @@
-import { mainContainer, proxyUrl, baseURL } from "./index.js";
+import { mainContainer, proxyUrl, baseURL, appArr } from "./index.js";
 
 export function appendApp(appObj) {
     mainContainer.appendChild(createAppStructure(appObj));
@@ -29,12 +29,15 @@ export function createAppStructure(appObj) {
 
     nameDiv.innerHTML = appObj.name;
     iconImg.src = appObj.icon
-    iconImg.alt = appObj.name[0];
+    // iconImg.alt = appObj.name[0];
+    // parentDiv.dataset.link = appObj.link;
     // getIcon(appObj.appLink, currentIconDIv, currentIconSlot);
 
     parentDiv.addEventListener('click', () => {
         window.open(`${appObj.link}`, '_blank');
     })
+
+    // appArr.push(parentDiv);
 
     counter++;
     return parentDiv;
@@ -42,6 +45,9 @@ export function createAppStructure(appObj) {
 
 export let counter = 0;
 
+// export function storeDiv(div, divname) {
+//     localStorage.setItem(`${divname}`, ) // DO THIS GOOD
+// }
 
 export class App {
 

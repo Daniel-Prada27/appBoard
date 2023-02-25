@@ -1,4 +1,4 @@
-import { appendApp, counter, App, justGetIcon} from "./createAppModule";
+import { appendApp, App} from "./createAppModule";
 
 
 const body = document.getElementById('body');
@@ -11,46 +11,26 @@ export const mainContainer = document.getElementById('main-container');
 
 const addBtn = document.getElementById('new-app-btn');
 
-
-const appLogo = document .querySelector(".app-logo")
-
-
 export const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const url = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://standardjs.com/index.html#is-there-an-automatic-formatter';
 export const baseURL = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url='
-fetch(proxyUrl + url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.blob();
-  })
-  .then(blob => {
-    const faviconUrl = URL.createObjectURL(blob);
-    const img = document.querySelector('.actual-logo');
-    img.src = faviconUrl;
-    appLogo.appendChild(img);
-  })
-  .catch(error => {
-    console.error('There was a problem fetching the favicon:', error);
-  });
 
-
-  for (let i = 0; i < inputField.length; i++) {
-    inputField[i].addEventListener('click', (e) => {
-      e.stopPropagation();
-    })
-  }
-
-console.log(addBtn);
 
 addBtn.addEventListener('click', (e) => {
-    e.stopPropagation;
+    e.stopPropagation();
     console.log("Btn prssed");
     console.log(e.target.id);
 })
 
-let appArr = [];
+export let appArr = [];
+
+if (localStorage.getItem('storedAppArr') == null) {
+    localStorage.setItem('storedAppArr', JSON.stringify(appArr));
+}
+
+
+let storedAppArr = JSON.parse(localStorage.getItem('storedAppArr')) || [];
+console.log(storedAppArr);
+console.log("first printed");
 
 
 
@@ -65,6 +45,10 @@ addBtn.addEventListener('click', (e) => {
     }
   })
 
+  popup.addEventListener('click', (e) => {
+    e.stopPropagation();
+  })
+
   form.addEventListener('submit', function (event) {
     // Prevent the form from being submitted
     event.preventDefault();
@@ -74,14 +58,41 @@ addBtn.addEventListener('click', (e) => {
     const newAppName = appName.value;
     const newAppLink = appLink.value;
     const newAppIconUrl = baseURL + newAppLink;
-    
+
     let newApp = new App(newAppName,newAppLink, newAppIconUrl);
+    // const newElement =
+
     appendApp(newApp)
+    appArr.push(newApp);
+    body.click();
     console.log(newApp);
     console.log(newApp.name)
+    console.log(appArr);
+
+    storedAppArr.push(newApp)
+    localStorage.setItem('storedAppArr', JSON.stringify(storedAppArr));
+    console.log(storedAppArr);
+    
   }) 
 
+//   function checkFields(fieldOne, fieldTwo) {
+//     if (fieldOne == false && fieldTwo == false) {
+//         body.click();
+//     }
+//   }
 
+window.onload = function() {
+
+    const storedArray = JSON.parse(localStorage.getItem('storedAppArr'));
+    console.log(storedArray);
+    console.log("printed");
+
+    for (let app in storedArray) {
+        console.log("here" + storedArray[app]);
+        appendApp(storedArray[app])
+
+      }
+}
 
 
 
@@ -95,3 +106,11 @@ addBtn.addEventListener('click', (e) => {
 
 
 // appendApp(2);
+// mainContainer.addEventListener('DomContentLoaded', (e) => {
+//     e.stopPropagation();
+//     console.log(e + 'loaded');
+// })
+
+
+
+
