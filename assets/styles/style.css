@@ -61,6 +61,8 @@ img {
     width: 80%;
     border-radius: 7px;
 
+    position: relative; /* Important for dots positioning with absolute */
+
     align-self: center;
     justify-content: center;
 
@@ -71,6 +73,17 @@ img {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     cursor: pointer;
+}
+
+.options-dots {
+    color: white;
+    writing-mode: vertical-lr;
+    position: absolute;
+    top: 15%;
+    right: 0px;
+
+    width: 20px;
+    font-size: 1.6rem;
 }
 
 .app-logo {

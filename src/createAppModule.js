@@ -10,15 +10,20 @@ export function createAppStructure(appObj) {
     let iconDiv = document.createElement('div');
     let iconImg = document.createElement('img');
     let nameDiv = document.createElement('div');
+    let options = document.createElement('div');
 
     parentDiv.classList.add("app")
     iconDiv.classList.add("app-logo");
     iconImg.classList.add("actual-logo");
     nameDiv.classList.add("app-name");
+    options.classList.add('options-dots');
 
     parentDiv.appendChild(iconDiv);
+    parentDiv.appendChild(options);
     iconDiv.appendChild(iconImg);
     parentDiv.appendChild(nameDiv);
+
+    options.textContent = '...';
 
     parentDiv.id = `app-${counter}`;
     iconDiv.id = `logo-div-${counter}`;
@@ -36,6 +41,8 @@ export function createAppStructure(appObj) {
     parentDiv.addEventListener('click', () => {
         window.open(`${appObj.link}`, '_blank');
     })
+
+    // options.addEventListener('click', (e)=>)
 
     // appArr.push(parentDiv);
 
