@@ -19,7 +19,7 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         common: {
-          test: /[\\/]node_modules[\\/]|[\\/]src[\\/](createAppModule|utils)\.js$/,
+          test: /[\\/]node_modules[\\/]|[\\/]src[\\/](createAppModule|utils|appIterator)\.js$/,
           name: 'common',
           chunks: 'all',
         },
