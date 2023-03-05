@@ -1,9 +1,12 @@
-import { mainContainer, proxyUrl, baseURL, appArr } from "./index.js";
+import { goOverApps } from "./appIterator.js";
+import { mainContainer, proxyUrl, baseURL, appArr, popup } from "./index.js";
 
 export function appendApp(appObj) {
     mainContainer.appendChild(createAppStructure(appObj));
     console.log("Append success");
 }
+
+export let optionedApp;
 
 export function createAppStructure(appObj) {
     let parentDiv = document.createElement('div');
@@ -34,15 +37,22 @@ export function createAppStructure(appObj) {
 
     nameDiv.innerHTML = appObj.name;
     iconImg.src = appObj.icon
-    // iconImg.alt = appObj.name[0];
-    // parentDiv.dataset.link = appObj.link;
-    // getIcon(appObj.appLink, currentIconDIv, currentIconSlot);
 
     parentDiv.addEventListener('click', () => {
+        if (popup.style.visibility === 'visible') {
+            return;
+        }
         window.open(`${appObj.link}`, '_blank');
     })
 
-    // options.addEventListener('click', (e)=>)
+    options.addEventListener('click', (e)=> {
+        e.stopPropagation();
+        console.log("options clicked");
+        let appName = e.currentTarget.parentNode.querySelector('.app-name').textContent;
+        optionedApp = appName;
+        goOverApps(e);
+        console.log(appName);
+    })
 
     // appArr.push(parentDiv);
 
@@ -52,9 +62,6 @@ export function createAppStructure(appObj) {
 
 export let counter = 0;
 
-// export function storeDiv(div, divname) {
-//     localStorage.setItem(`${divname}`, ) // DO THIS GOOD
-// }
 
 export class App {
 
@@ -72,24 +79,24 @@ export class App {
 }
 
 
-  export function getIcon(url, iconDIv, iconSlot) {
-    fetch(proxyUrl + url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.blob();
-  })
-  .then(blob => {
-    const faviconUrl = URL.createObjectURL(blob);
-    // const img = document.querySelector('.actual-logo');
-    iconSlot.src = faviconUrl;
-    iconDIv.appendChild(iconSlot);
-  })
-  .catch(error => {
-    console.error('There was a problem fetching the favicon:', error);
-  });
-  }
+//   export function getIcon(url, iconDIv, iconSlot) {
+//     fetch(proxyUrl + url)
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.blob();
+//   })
+//   .then(blob => {
+//     const faviconUrl = URL.createObjectURL(blob);
+//     // const img = document.querySelector('.actual-logo');
+//     iconSlot.src = faviconUrl;
+//     iconDIv.appendChild(iconSlot);
+//   })
+//   .catch(error => {
+//     console.error('There was a problem fetching the favicon:', error);
+//   });
+//   }
 
   export function justGetIcon(url) {
     return fetch(proxyUrl + url).then(response => {

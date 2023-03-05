@@ -1,8 +1,9 @@
+import { goOverApps } from "./appIterator";
 import { appendApp, App} from "./createAppModule";
 
 
 const body = document.getElementById('body');
-const popup = document.getElementById('add-popup');
+export const popup = document.getElementById('add-popup');
 
 const form = document.querySelector('.form')
 const inputField = document.querySelectorAll('.input');
@@ -28,7 +29,7 @@ if (localStorage.getItem('storedAppArr') == null) {
 }
 
 
-let storedAppArr = JSON.parse(localStorage.getItem('storedAppArr')) || [];
+export let storedAppArr = JSON.parse(localStorage.getItem('storedAppArr')) || [];
 console.log(storedAppArr);
 console.log("first printed");
 
@@ -75,11 +76,7 @@ addBtn.addEventListener('click', (e) => {
     
   }) 
 
-//   function checkFields(fieldOne, fieldTwo) {
-//     if (fieldOne == false && fieldTwo == false) {
-//         body.click();
-//     }
-//   }
+
 
 window.onload = function() {
 
@@ -88,7 +85,7 @@ window.onload = function() {
     console.log("printed");
 
     for (let app in storedArray) {
-        console.log("here" + storedArray[app]);
+        console.log("here" + JSON.stringify(storedArray[app]));
         appendApp(storedArray[app])
 
       }
@@ -96,21 +93,13 @@ window.onload = function() {
 
 
 
-  body.addEventListener('click', () => {
+  body.addEventListener('click', (e) => {
+    console.log(appArr);
     console.log(popup.style.visibility);
     if (popup.style.visibility === 'visible') {
       popup.style.cssText = 'transform: translate(-50%, -50%) scale(0.1); visibility: hidden;';
       body.style.backgroundColor = 'rgba(224, 224, 224, 1)';
     }
   })
-
-
-// appendApp(2);
-// mainContainer.addEventListener('DomContentLoaded', (e) => {
-//     e.stopPropagation();
-//     console.log(e + 'loaded');
-// })
-
-
 
 
