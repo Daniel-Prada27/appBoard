@@ -1,10 +1,11 @@
 import { goOverApps } from "./appIterator";
 import { appendApp, App} from "./createAppModule";
-import { deleteApp } from "./optionButtonsModule";
+import { deleteApp, editName } from "./optionButtonsModule";
 
 
 const body = document.getElementById('body');
 export const popup = document.getElementById('add-popup');
+export const changePopup = document.getElementById('change-popup');
 
 const form = document.querySelector('.form')
 const inputField = document.querySelectorAll('.input');
@@ -17,6 +18,7 @@ export const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 export const baseURL = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url='
 
 export const editPopUp = document.querySelector('.edit-popup');
+export const changeBtn = document.getElementById('change-name-btn');
 export const deleteBtn = document.getElementById('delete-btn');
 
 
@@ -77,8 +79,8 @@ addBtn.addEventListener('click', (e) => {
     storedAppArr.push(newApp)
     localStorage.setItem('storedAppArr', JSON.stringify(storedAppArr));
     console.log(storedAppArr);
-    
-  }) 
+
+  })
 
 
 
@@ -97,19 +99,22 @@ window.onload = function() {
 
 
 
-  body.addEventListener('click', (e) => {
+body.addEventListener('click', (e) => {
     console.log(appArr);
     console.log(popup.style.visibility);
     if (popup.style.visibility === 'visible') {
       popup.style.cssText = 'transform: translate(-50%, -50%) scale(0.1); visibility: hidden;';
       body.style.backgroundColor = 'rgba(224, 224, 224, 1)';
     }
-
     if (editPopUp.classList.contains('show')) {
         editPopUp.classList.toggle('show');
     }
 
+    if (changePopup.classList.contains('show')) {
+        changePopup.classList.toggle('show');
+    }
+
   })
 
-
+changeBtn.addEventListener('click', editName);
 deleteBtn.addEventListener('click', deleteApp);

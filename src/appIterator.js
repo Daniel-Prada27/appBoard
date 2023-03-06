@@ -2,7 +2,7 @@ import { optionedApp } from "./createAppModule.js";
 import { storedAppArr } from "./index.js";
 
 
-export let indexToRemove;
+export let optionedAppIndex;
 
 
 export function goOverApps() {
@@ -19,7 +19,7 @@ export function goOverApps() {
             // nameField.innerHTML = "inmediateChange";
             localStorage.setItem('storedAppArr', JSON.stringify(storedAppArr));
             console.log("bbbb");
-            indexToRemove = app;
+            optionedAppIndex = app;
             return;
         }
 

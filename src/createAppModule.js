@@ -84,25 +84,6 @@ export class App {
 }
 
 
-//   export function getIcon(url, iconDIv, iconSlot) {
-//     fetch(proxyUrl + url)
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok');
-//     }
-//     return response.blob();
-//   })
-//   .then(blob => {
-//     const faviconUrl = URL.createObjectURL(blob);
-//     // const img = document.querySelector('.actual-logo');
-//     iconSlot.src = faviconUrl;
-//     iconDIv.appendChild(iconSlot);
-//   })
-//   .catch(error => {
-//     console.error('There was a problem fetching the favicon:', error);
-//   });
-//   }
-
   export function justGetIcon(url) {
     return fetch(proxyUrl + url).then(response => {
     if (!response.ok) {
