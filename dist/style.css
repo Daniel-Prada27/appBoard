@@ -88,8 +88,13 @@ img {
     color: white;
     writing-mode: vertical-lr;
     position: absolute;
-    top: 15%;
-    right: 10%;
+    /* top: 15%;
+    right: 10%; */
+
+    top: 0;
+    right: 0;
+
+    padding: 11px 10px 10px 10px;
 
     width: 10px;
     height: max-content;
