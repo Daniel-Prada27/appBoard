@@ -10,6 +10,7 @@ body {
     /* background-color: #E0E0E0; */
     background-color: rgba(224, 224, 224, 1);
     height: 100vh;
+    max-height: 100vh;
     width: 100vw;
     max-width: 100%;
 
@@ -239,8 +240,9 @@ input:focus {
     flex-direction: column;
     position: absolute;
     background-color: #E0E0E0;
-    bottom: -100%;
+    bottom: 0;
     visibility: hidden;
+    transform: translateY(100%);
 
     width: 100%;
 
@@ -252,12 +254,14 @@ input:focus {
     z-index: 10;
 
 
-    transition: bottom 0.36s ease-in-out;
+    transition: transform 0.36s ease-in-out;
 }
 
 .edit-popup.show {
-    bottom: 5px; /* move the element to the bottom of the screen */
+    bottom: 0; /* move the element to the bottom of the screen */
     visibility: visible;
+    position: sticky;
+    transform: translateY(0);
   }
 
 .edit-popup > button {
