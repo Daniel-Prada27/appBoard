@@ -41,7 +41,7 @@ export function createAppStructure(appObj) {
     iconImg.src = appObj.icon
 
     parentDiv.addEventListener('click', () => {
-        if (popup.style.visibility === 'visible') {
+        if ((popup.style.visibility === 'visible') || editPopUp.classList.contains('show')) {
             return;
         }
         window.open(`${appObj.link}`, '_blank');
