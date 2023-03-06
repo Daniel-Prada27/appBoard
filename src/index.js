@@ -1,7 +1,7 @@
 import { goOverApps, nameField, optionedAppIndex } from "./appIterator";
 import { appendApp, App, optionedAppImg} from "./createAppModule";
 import { deleteApp, editName } from "./optionButtonsModule";
-import './style.css';
+// import './style.css';
 
 
 const body = document.getElementById('body');
