@@ -218,3 +218,41 @@ input:focus {
     border-radius: 8px;
     font-size: 1.2rem;
 }
+
+.edit-popup {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 5px;
+
+    width: 100%;
+
+
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    z-index: 10;
+    /* align-self: flex-end; */
+}
+
+.edit-popup > button {
+    width: 90%;
+    border-radius: 9px;
+    margin-bottom: 1rem;
+    padding: 0.8rem 0.8rem;
+
+    border: ;
+    z-index: 10;
+}
+
+.editBtn {
+    background-color: #a7ade5;
+}
+
+#delete-btn {
+    background-color: #e58c8c;
+}
+
+#delete-btn:hover {
+    background-color: #bf5959;
+}
