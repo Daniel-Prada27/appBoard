@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <!-- <script type="module" src="../src/utils.js"></script> -->
+    <!-- <script type="module" src="../src/index.js" defer></script> -->
+    <script src="./main.js" defer></script>
+    <title>Index</title>
+</head>
+<body id="body">
+
+    <div class="popup" id="add-popup">
+        <form class="form" id="addForm" action="" method="post">
+            <div class="addAppTitle">Add An App</div>
+            <div class="form-input-fields-div">
+                <input
+                    type="text"
+                    class="input"
+                    id="appName"
+                    placeholder="Shortcut name"
+                    name="appName"
+                    autocomplete="off"
+                  
+                />
+            </div>
+
+            <div class="form-input-fields-div">
+                <input
+                    type="text"
+                    class="input"
+                    id="appLink"
+                    placeholder="Site URL"
+                    name="appLink"
+                    autocomplete="off"
+                    
+                />
+            </div>
+
+            <button class="submitBtn" id="submitBtn">Create</button>
+        </form>
+    </div>
+
+
+
+
+    <div id="whole-container">
+        <header id="Header">My App Deck</header>
+
+        <div id="main-container">
+    
+        </div>
+
+        <div id="new-app-btn">
+            <div>+</div>
+        </div>
+
+
+    </div>
+
+    <div class="edit-popup">
+
+       <button class="editBtn" id="change-name-btn">Edit App</button>
+       <button class="deleteBtn" id="delete-btn">Delete App</button>
+
+    </div>
+
+    <div class="change-popup popup" id="change-popup">
+        <form class="change-form" id="changeForm" action="" method="post">
+            <div class="editAppTitle">Edit Your App</div>
+            <div class="form-input-fields-div">
+                <input
+                    type="text"
+                    class="input"
+                    id="editAppName"
+                    placeholder="Shortcut name"
+                    name="editAppName"
+                    autocomplete="off"
+                  
+                />
+            </div>
+
+            <div class="form-input-fields-div">
+                <input
+                    type="text"
+                    class="input"
+                    id="editAppLink"
+                    placeholder="Site URL"
+                    name="editAppLink"
+                    autocomplete="off"
+                    
+                />
+            </div>
+
+            <button class="submitBtn" id="submitBtn">Save</button>
+        </form>
+    </div>
+
+
+</body>
+</html>
