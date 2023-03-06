@@ -242,12 +242,13 @@ input:focus {
 
     width: 100%;
 
+    padding-top: 1.5rem;
+
 
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
     z-index: 10;
-    /* align-self: flex-end; */
+
 
     transition: bottom 0.36s ease-in-out;
 }
@@ -260,7 +261,7 @@ input:focus {
     width: 90%;
     border-radius: 9px;
     margin-bottom: 1rem;
-    padding: 0.8rem 0.8rem;
+    padding: 1rem 1rem;
 
     /* border: ; */
     z-index: 10;

@@ -2,8 +2,16 @@
 
 const path = require('path');
 const webpack = require('webpack');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+    module: {
+        rules: [
+          { test: /\.css$/,
+           use: ['style-loader', 'css-loader'],
+         },
+        ],
+      },
     entry: {
         index: path.resolve(__dirname, 'src/index.js'),
         // dependencies: [path.resolve(__dirname, 'src/createAppModule.js'), path.resolve(__dirname, 'src/utils.js'),]
