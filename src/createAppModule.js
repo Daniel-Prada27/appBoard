@@ -8,6 +8,7 @@ export function appendApp(appObj) {
 
 export let optionedApp;
 export let optionedAppParentDiv;
+export let optionedAppImg;
 
 export function createAppStructure(appObj) {
     let parentDiv = document.createElement('div');
@@ -49,13 +50,15 @@ export function createAppStructure(appObj) {
     options.addEventListener('click', (e)=> {
         e.stopPropagation();
         editPopUp.classList.toggle('show');
-        console.log("options clicked");
+
         let appName = e.currentTarget.parentNode.querySelector('.app-name').textContent;
         let parentAppDiv = e.currentTarget.parentNode;
         optionedAppParentDiv = parentAppDiv;
-        console.log(parentAppDiv);
+
+        optionedAppImg = parentAppDiv.querySelector('.actual-logo');
+
         optionedApp = appName;
-        goOverApps();
+        goOverApps(e);
         console.log(appName);
     })
 

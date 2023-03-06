@@ -284,4 +284,5 @@ input:focus {
 
 .change-popup.show {
     visibility: visible;
+    z-index: 50;
 }

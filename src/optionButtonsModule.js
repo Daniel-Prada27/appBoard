@@ -1,4 +1,4 @@
-import { changePopup, editPopUp, mainContainer, storedAppArr } from ".";
+import { changeForm, changePopup, editPopUp, mainContainer, storedAppArr } from ".";
 import { goOverApps, optionedAppIndex } from "./appIterator";
 import { optionedAppParentDiv } from "./createAppModule";
 
@@ -13,6 +13,7 @@ export function deleteApp() {
 
 export function editName(e) {
     e.stopPropagation();
+    changeForm.reset();
     editPopUp.classList.toggle('show');
     changePopup.classList.toggle('show');
     // Create a popup to change the App Name, then do the logic storedAppArr[optionedAppIndex].name = bla bla

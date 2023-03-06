@@ -1,5 +1,5 @@
-import { goOverApps } from "./appIterator";
-import { appendApp, App} from "./createAppModule";
+import { goOverApps, nameField, optionedAppIndex } from "./appIterator";
+import { appendApp, App, optionedAppImg} from "./createAppModule";
 import { deleteApp, editName } from "./optionButtonsModule";
 
 
@@ -7,7 +7,8 @@ const body = document.getElementById('body');
 export const popup = document.getElementById('add-popup');
 export const changePopup = document.getElementById('change-popup');
 
-const form = document.querySelector('.form')
+const addForm = document.querySelector('.form')
+export const changeForm = document.getElementById('changeForm');
 const inputField = document.querySelectorAll('.input');
 
 export const mainContainer = document.getElementById('main-container');
@@ -45,9 +46,9 @@ addBtn.addEventListener('click', (e) => {
     if (popup.style.visibility === 'visible') {
       body.click();
     } else {
-      popup.style.cssText = 'transform: translate(-50%, -50%) scale(1); visibility: visible; transition: 0.2s ease-in;';
+      popup.style.cssText = 'transaddForm: translate(-50%, -50%) scale(1); visibility: visible; transition: 0.2s ease-in;';
       body.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-      form.reset();
+      addForm.reset();
       e.stopPropagation();
     }
   })
@@ -56,8 +57,12 @@ addBtn.addEventListener('click', (e) => {
     e.stopPropagation();
   })
 
-  form.addEventListener('submit', function (event) {
-    // Prevent the form from being submitted
+  changePopup.addEventListener('click', (e) => {
+    e.stopPropagation();
+  })
+
+  addForm.addEventListener('submit', function (event) {
+    // Prevent the addForm from being submitted
     event.preventDefault();
     event.stopPropagation();
     console.log("Submited");
@@ -103,7 +108,7 @@ body.addEventListener('click', (e) => {
     console.log(appArr);
     console.log(popup.style.visibility);
     if (popup.style.visibility === 'visible') {
-      popup.style.cssText = 'transform: translate(-50%, -50%) scale(0.1); visibility: hidden;';
+      popup.style.cssText = 'transaddForm: translate(-50%, -50%) scale(0.1); visibility: hidden;';
       body.style.backgroundColor = 'rgba(224, 224, 224, 1)';
     }
     if (editPopUp.classList.contains('show')) {
@@ -118,3 +123,31 @@ body.addEventListener('click', (e) => {
 
 changeBtn.addEventListener('click', editName);
 deleteBtn.addEventListener('click', deleteApp);
+
+
+changeForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("Submited");
+
+    const newAppName = editAppName.value;
+    const newAppLink = editAppLink.value;
+    const newAppIconUrl = baseURL + newAppLink;
+
+    storedAppArr[optionedAppIndex].name = newAppName;
+    nameField.innerHTML = newAppName;
+
+    console.log(newAppLink === '');
+
+    if (newAppLink !== '') {
+        storedAppArr[optionedAppIndex].link = newAppLink;
+        storedAppArr[optionedAppIndex].icon = newAppIconUrl;
+        optionedAppImg.src = newAppIconUrl;
+    }
+
+    body.click();
+
+    localStorage.setItem('storedAppArr', JSON.stringify(storedAppArr));
+    console.log(storedAppArr);
+
+});
