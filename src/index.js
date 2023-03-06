@@ -1,5 +1,6 @@
 import { goOverApps } from "./appIterator";
 import { appendApp, App} from "./createAppModule";
+import { deleteApp } from "./optionButtonsModule";
 
 
 const body = document.getElementById('body');
@@ -14,6 +15,9 @@ const addBtn = document.getElementById('new-app-btn');
 
 export const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 export const baseURL = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url='
+
+export const editPopUp = document.querySelector('.edit-popup');
+export const deleteBtn = document.getElementById('delete-btn');
 
 
 addBtn.addEventListener('click', (e) => {
@@ -100,6 +104,12 @@ window.onload = function() {
       popup.style.cssText = 'transform: translate(-50%, -50%) scale(0.1); visibility: hidden;';
       body.style.backgroundColor = 'rgba(224, 224, 224, 1)';
     }
+
+    if (editPopUp.classList.contains('show')) {
+        editPopUp.classList.toggle('show');
+    }
+
   })
 
 
+deleteBtn.addEventListener('click', deleteApp);

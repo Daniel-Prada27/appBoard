@@ -1,5 +1,5 @@
 import { goOverApps } from "./appIterator.js";
-import { mainContainer, proxyUrl, baseURL, appArr, popup } from "./index.js";
+import { mainContainer, proxyUrl, baseURL, appArr, popup, editPopUp } from "./index.js";
 
 export function appendApp(appObj) {
     mainContainer.appendChild(createAppStructure(appObj));
@@ -7,6 +7,7 @@ export function appendApp(appObj) {
 }
 
 export let optionedApp;
+export let optionedAppParentDiv;
 
 export function createAppStructure(appObj) {
     let parentDiv = document.createElement('div');
@@ -47,10 +48,14 @@ export function createAppStructure(appObj) {
 
     options.addEventListener('click', (e)=> {
         e.stopPropagation();
+        editPopUp.classList.toggle('show');
         console.log("options clicked");
         let appName = e.currentTarget.parentNode.querySelector('.app-name').textContent;
+        let parentAppDiv = e.currentTarget.parentNode;
+        optionedAppParentDiv = parentAppDiv;
+        console.log(parentAppDiv);
         optionedApp = appName;
-        goOverApps(e);
+        goOverApps();
         console.log(appName);
     })
 

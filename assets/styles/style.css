@@ -149,6 +149,11 @@ img {
     cursor: pointer;
 }
 
+#new-app-btn.invisible {
+    visibility: hidden;
+    z-index: -5;
+}
+
 
 
 
@@ -223,7 +228,8 @@ input:focus {
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 5px;
+    background-color: #E0E0E0;
+    bottom: -100%;
 
     width: 100%;
 
@@ -233,7 +239,13 @@ input:focus {
     border: 2px solid black;
     z-index: 10;
     /* align-self: flex-end; */
+
+    transition: bottom 0.36s ease-in-out;
 }
+
+.edit-popup.show {
+    bottom: 5px; /* move the element to the bottom of the screen */
+  }
 
 .edit-popup > button {
     width: 90%;
@@ -241,7 +253,7 @@ input:focus {
     margin-bottom: 1rem;
     padding: 0.8rem 0.8rem;
 
-    border: ;
+    /* border: ; */
     z-index: 10;
 }
 
