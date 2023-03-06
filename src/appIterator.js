@@ -16,10 +16,6 @@ export function goOverApps(event) {
         if (storedAppArr[app].name === optionedApp) {
 
             console.log(JSON.stringify(storedAppArr[app]));
-            // storedAppArr[app].name = "savedName";
-            // nameField.innerHTML = "inmediateChange";
-            // localStorage.setItem('storedAppArr', JSON.stringify(storedAppArr));
-            console.log("bbbb");
             optionedAppIndex = app;
             return;
         }

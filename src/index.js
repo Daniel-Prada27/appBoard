@@ -1,4 +1,4 @@
-import { goOverApps, nameField, optionedAppIndex } from "./appIterator";
+import { nameField, optionedAppIndex } from "./appIterator";
 import { appendApp, App, optionedAppImg} from "./createAppModule";
 import { deleteApp, editName } from "./optionButtonsModule";
 // import './style.css';
@@ -22,6 +22,9 @@ export const baseURL = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVI
 export const editPopUp = document.querySelector('.edit-popup');
 export const changeBtn = document.getElementById('change-name-btn');
 export const deleteBtn = document.getElementById('delete-btn');
+
+export const editAppLink = document.getElementById('editAppLink');
+export const editAppName = document.getElementById('editAppName');
 
 
 addBtn.addEventListener('click', (e) => {
@@ -135,14 +138,18 @@ changeForm.addEventListener('submit', (e) => {
     const newAppLink = editAppLink.value;
     const newAppIconUrl = baseURL + newAppLink;
 
-    storedAppArr[optionedAppIndex].name = newAppName;
-    nameField.innerHTML = newAppName;
+    if (newAppName !== '') {
+        optionedStoredApp.name = newAppName;
+        nameField.innerHTML = newAppName;
+    }
+
+
 
     console.log(newAppLink === '');
 
     if (newAppLink !== '') {
-        storedAppArr[optionedAppIndex].link = newAppLink;
-        storedAppArr[optionedAppIndex].icon = newAppIconUrl;
+        optionedStoredApp.link = newAppLink;
+        optionedStoredApp.icon = newAppIconUrl;
         optionedAppImg.src = newAppIconUrl;
     }
 
