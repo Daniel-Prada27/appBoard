@@ -1,5 +1,5 @@
 import { nameField, optionedAppIndex } from "./appIterator";
-import { appendApp, App, optionedAppImg} from "./createAppModule";
+import { appendApp, App, optionedAppImg, counter} from "./createAppModule";
 import { deleteApp, editName } from "./optionButtonsModule";
 // import './style.css';
 
@@ -74,8 +74,9 @@ addBtn.addEventListener('click', (e) => {
     const newAppName = appName.value;
     const newAppLink = appLink.value;
     const newAppIconUrl = baseURL + newAppLink;
+    let newAppId = `app-${counter}`
 
-    let newApp = new App(newAppName,newAppLink, newAppIconUrl);
+    let newApp = new App(newAppName,newAppLink, newAppIconUrl, newAppId);
     // const newElement =
 
     appendApp(newApp)

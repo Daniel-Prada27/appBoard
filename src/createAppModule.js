@@ -73,10 +73,11 @@ export let counter = 0;
 
 export class App {
 
-    constructor(appName, appLink, appIconUrl) {
+    constructor(appName, appLink, appIconUrl, appId) {
         this.name = appName;
         this.link = appLink;
         this.icon = appIconUrl;
+        this.id = appId;
         // ID = this.name
     }
 
